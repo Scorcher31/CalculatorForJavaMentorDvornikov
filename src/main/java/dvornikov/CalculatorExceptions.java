@@ -8,7 +8,13 @@ public enum CalculatorExceptions {
     NEGATIVEORNULLNUMBER("Вы ввели нуль, либо отрицательное число. \nПрограмма работает только с натуральными числами меньшими или равными 10."),
     INPUTCONTAINSNOOPERATION("Введённая вами строка не содержит оператора арифметического действия.");
 
+    private String text;
+
     private CalculatorExceptions(String text) {
-        //
+        this.text = text;
+    }
+
+    public String getText() {
+        return text;
     }
 }
