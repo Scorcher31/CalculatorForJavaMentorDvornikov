@@ -8,29 +8,35 @@ public class ConsoleInput extends InputInformation {
 
     @Override
     public void getInformationFromInputData() throws CalculatorException {
-        this.a = Integer.parseInt(data[0]);
-        this.b = Integer.parseInt(data[2]);
-        char operand = data[1].charAt(0);
+        this.a = data[0];
+        this.b = data[2];
+        char operator = data[1].charAt(0);
 
-        switch (operand) {
+        checkOperand(operator);
+        CalculatorInputHandler check10 = new CheckTheValueOfOperands(null);
+        CalculatorInputHandler checkRoman = new RomanNumeralsChecker(check10);
+        CalculatorInputHandler dotCheck = new CheckFraction(checkRoman);
+        CalculatorInputHandler negativeCheck = new CheckNegative(dotCheck);
+        negativeCheck.currentCheckOrDoing(a);
+        negativeCheck.currentCheckOrDoing(b);
+    }
+
+    private void checkOperand(char operator) throws CalculatorException{
+        switch (operator) {
             case '+':
-                this.operand = Operands.ADD;
+                this.operator = Operators.ADD;
                 break;
             case '-':
-                this.operand = Operands.SUBTRACT;
+                this.operator = Operators.SUBTRACT;
                 break;
             case '*':
-                this.operand = Operands.MULTIPLY;
+                this.operator = Operators.MULTIPLY;
                 break;
             case '/':
-                this.operand = Operands.DIVIDE;
+                this.operator = Operators.DIVIDE;
                 break;
             default:
                 throw new CalculatorException(CalculatorExceptions.INPUTCONTAINSNOOPERATION);
         }
-    }
-
-    private boolean containsRomanNumerals(String argument) {
-        return true;
     }
 }

@@ -1,21 +1,21 @@
 package dvornikov;
 
 public abstract class InputInformation {
-    int a;
-    int b;
-    Operands operand;
+    String a;
+    String b;
+    Operators operator;
 
     public abstract void getInformationFromInputData() throws CalculatorException;
 
-    public int getA() {
+    public String getA() {
         return a;
     }
 
-    public int getB() {
+    public String getB() {
         return b;
     }
 
-    public Operands getOperand() {
-        return operand;
+    public Operators getOperator() {
+        return operator;
     }
 }
