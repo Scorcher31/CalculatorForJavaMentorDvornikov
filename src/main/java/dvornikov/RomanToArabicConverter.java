@@ -1,7 +1,5 @@
 package dvornikov;
 
-import java.util.Arrays;
-
 public class RomanToArabicConverter {
     private static String romanNumerals = "MDCLXVI";
 

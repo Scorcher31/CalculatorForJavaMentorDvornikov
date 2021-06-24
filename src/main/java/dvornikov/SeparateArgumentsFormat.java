@@ -12,7 +12,7 @@ public class SeparateArgumentsFormat extends InputInformation {
         this.b = data[2];
         char operator = data[1].charAt(0);
 
-        checkOperand(operator);
+        checkOperator(operator);
         CalculatorInputHandler check10 = new CheckTheValueOfOperands(null);
         CalculatorInputHandler checkRoman = new RomanNumeralsChecker(check10);
         CalculatorInputHandler dotCheck = new CheckFraction(checkRoman);
@@ -29,7 +29,7 @@ public class SeparateArgumentsFormat extends InputInformation {
             isArabic = true;
     }
 
-    private void checkOperand(char operator) throws CalculatorException{
+    private void checkOperator(char operator) throws CalculatorException{
         switch (operator) {
             case '+':
                 this.operator = Operators.ADD;

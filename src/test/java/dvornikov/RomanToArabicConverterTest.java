@@ -19,6 +19,11 @@ public class RomanToArabicConverterTest {
     }
 
     @Test
+    public void isRomanNumberf1() {
+        assertEquals(false, RomanToArabicConverter.isRomanNumber("+"));
+    }
+
+    @Test
     public void isArabicNumber() {
         assertEquals(true, RomanToArabicConverter.isArabicNumber("1567"));
     }
