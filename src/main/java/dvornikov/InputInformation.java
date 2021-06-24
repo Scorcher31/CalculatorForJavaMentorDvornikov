@@ -3,16 +3,18 @@ package dvornikov;
 public abstract class InputInformation {
     String a;
     String b;
+    boolean isArabic = false;
+
     Operators operator;
 
     public abstract void getInformationFromInputData() throws CalculatorException;
 
-    public String getA() {
-        return a;
+    public int getA() {
+        return Integer.parseInt(a);
     }
 
-    public String getB() {
-        return b;
+    public int getB() {
+        return Integer.parseInt(b);
     }
 
     public Operators getOperator() {

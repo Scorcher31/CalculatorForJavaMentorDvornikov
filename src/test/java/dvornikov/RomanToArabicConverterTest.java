@@ -15,7 +15,7 @@ public class RomanToArabicConverterTest {
 
     @Test
     public void isRomanNumberf() {
-        assertEquals(false, RomanToArabicConverter.isRomanNumber("158"));
+        assertEquals(false, RomanToArabicConverter.isRomanNumber("167"));
     }
 
     @Test
@@ -55,6 +55,15 @@ public class RomanToArabicConverterTest {
         }
     }
 
+    @Test
+    public void translateToArabicNumericals7() {
+        try {
+            assertEquals("7", RomanToArabicConverter.RomanToArabic("VII"));
+        } catch(CalculatorException cex) {
+            cex.printStackTrace();
+        }
+    }
+
     @Test(expected = CalculatorException.class)
     public void translateToArabicNumericalsExc() throws CalculatorException {
         RomanToArabicConverter.RomanToArabic("VIIIMMMM");
@@ -63,5 +72,10 @@ public class RomanToArabicConverterTest {
     @Test
     public void arabicToRoman1998() {
         assertEquals("MCMXCVIII", RomanToArabicConverter.arabicToRoman(1998));
+    }
+
+    @Test
+    public void arabicToRoman1998m() {
+        assertEquals("-MCMXCVIII", RomanToArabicConverter.arabicToRoman(-1998));
     }
 }

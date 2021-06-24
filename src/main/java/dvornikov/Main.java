@@ -1,6 +1,4 @@
 package dvornikov;
-import java.nio.file.NoSuchFileException;
-import java.util.List;
 import java.util.Scanner;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -9,10 +7,7 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) {
-        boolean b = RomanToArabicConverter.isRomanNumber("xix");
-        System.out.println(b);
-        /*String inputString;
-        InputInformation expression;
+        String inputString;
 
         if (args.length == 1) {
             try {
@@ -26,7 +21,15 @@ public class Main {
         }
 
         if(args.length == 3) {
-            //
-        }*/
+            SeparateArgumentsFormat in = new SeparateArgumentsFormat(args);
+            try {
+                in.getInformationFromInputData();
+            } catch(CalculatorException cex) {
+                System.out.println(cex.getMessage());
+            }
+            Calculate calculator = new Calculate(in.getA(), in.getB(), in.getOperator(), in.isArabic);
+            String res = calculator.getResult();
+            System.out.println(res);
+        }
     }
 }

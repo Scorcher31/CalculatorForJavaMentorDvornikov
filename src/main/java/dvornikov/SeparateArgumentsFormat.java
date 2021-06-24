@@ -1,8 +1,8 @@
 package dvornikov;
 
-public class ConsoleInput extends InputInformation {
+public class SeparateArgumentsFormat extends InputInformation {
     private final String[] data;
-    public ConsoleInput(String[] data) {
+    public SeparateArgumentsFormat(String[] data) {
         this.data = data;
     }
 
@@ -18,7 +18,15 @@ public class ConsoleInput extends InputInformation {
         CalculatorInputHandler dotCheck = new CheckFraction(checkRoman);
         CalculatorInputHandler negativeCheck = new CheckNegative(dotCheck);
         negativeCheck.currentCheckOrDoing(a);
+        a = check10.getOperand();
+        boolean aIsArabic = ((RomanNumeralsChecker)checkRoman).isInituallyArabic();
         negativeCheck.currentCheckOrDoing(b);
+        b = check10.getOperand();
+        boolean bIsArabic = ((RomanNumeralsChecker)checkRoman).isInituallyArabic();
+        if(aIsArabic != bIsArabic)
+            throw new CalculatorException(CalculatorExceptions.INAPPROPRIATECOMBINATIONOFOPERANDS);
+        if(aIsArabic)
+            isArabic = true;
     }
 
     private void checkOperand(char operator) throws CalculatorException{
