@@ -1,6 +1,6 @@
 package dvornikov;
 
-public enum Operands {
+public enum Operators {
     ADD,
     SUBTRACT,
     MULTIPLY,
