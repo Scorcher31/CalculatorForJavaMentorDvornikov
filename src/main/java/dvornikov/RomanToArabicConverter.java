@@ -37,6 +37,9 @@ public class RomanToArabicConverter {
         RomanNumerals[] rn = RomanNumerals.getContainedValues();
         int curSym = 0;
         StringBuilder sb = new StringBuilder();
+        if(number == 0)
+            return("0");
+
         if(number < 0) {
             sb.append('-');
             number *= -1;
