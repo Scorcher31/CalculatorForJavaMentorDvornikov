@@ -11,35 +11,24 @@ public class Main {
         int len = args.length;
 
         switch (args.length) {
+            case 0:
+                System.out.println("Введите, пожалуйста, строку вида: a+b или a-b:");
+                Scanner in = new Scanner(System.in);
+                inputString = in.nextLine();
+                break;
+
             case 1:
                 try {
                     Path path = Paths.get(args[0]);
                     Scanner fileScanner = new Scanner(path);
                     inputString = fileScanner.nextLine();
                 } catch (IOException ex) {
-                    System.out.println("Одиночный аргумент командной строки предполагает запись туда пути до файла с корректными данными.");
-                    System.exit(1);
+                    inputString = args[0];
                 }
                 break;
 
             case 3:
-                SeparateArgumentsFormat arg = new SeparateArgumentsFormat(args);
-                try {
-                    arg.getInformationFromInputData();
-                } catch(CalculatorException cex) {
-                    System.err.println(cex.getMessage());
-                    System.exit(1);
-                }
-                Calculate calculator = new Calculate(arg.getA(), arg.getB(), arg.getOperator(), arg.isArabic);
-                String res = calculator.getResult();
-                System.out.println(res);
-                System.exit(0);
-                break;
-
-            case 0:
-                System.out.println("Введите, пожалуйста, строку вида: a+b или a-b:");
-                Scanner in = new Scanner(System.in);
-                inputString = in.nextLine();
+                InputParser arg = InputParser.getInputParserForSeparateArguments(args);
                 break;
 
             default:
@@ -47,16 +36,17 @@ public class Main {
                 System.exit(1);
         }
 
-        SingleStringFormat sf = new SingleStringFormat(inputString);
+        InputParser arg = InputParser.getInputParserForSingleString(inputString);
         try {
-            sf.getInformationFromInputData();
+            arg.getInformationFromInputData();
         } catch (CalculatorException cex) {
             System.err.println(cex.getMessage());
             System.exit(1);
         }
 
-        Calculate calculator = new Calculate(sf.getA(), sf.getB(), sf.getOperator(), sf.isArabic);
+        Calculate calculator = new Calculate(arg.getA(), arg.getB(), arg.getOperator(), arg.isArabic);
         String res = calculator.getResult();
         System.out.println(res);
+        System.exit(0);
     }
 }

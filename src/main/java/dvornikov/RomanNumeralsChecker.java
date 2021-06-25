@@ -23,7 +23,7 @@ public class RomanNumeralsChecker extends CalculatorInputHandler {
         } else {
             throw new CalculatorException(CalculatorExceptions.NOTANUMBER);
         }
-        if(!successor.equals(null))
+        if(successor != null)
             successor.currentCheckOrDoing(operand);
         return;
     }
