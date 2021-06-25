@@ -87,6 +87,8 @@ public class InputParser {
             arguments[0] = data.substring(0, pos);
             arguments[1] = data.substring(pos, pos + 1);
             arguments[2] = data.substring(pos + 1);
+            if(arguments[0].equals("") || arguments[2].equals(""))
+                throw new CalculatorException(CalculatorExceptions.NOSECONDOPERAND);
         }
     }
 
